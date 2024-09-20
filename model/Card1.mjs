@@ -12,6 +12,10 @@ const Card1Schema = new mongoose.Schema({
         "{VALUE} is not a valid card type. Choose either 'water', 'fire', or 'wind'.",
     },
   },
+  wheel: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Wheel",
+  },
 });
 const Card1 = mongoose.model("Card1", Card1Schema);
 export default Card1;

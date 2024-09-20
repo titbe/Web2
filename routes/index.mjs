@@ -1,6 +1,8 @@
 import { Router } from "express";
 import Card1Route from "./Card1Route.mjs";
 import Card2Route from "./Card2Route.mjs";
+import WheelRoute from "./WheelRoute.mjs";
+
 import {
   getDownloadURL,
   getStorage,
@@ -32,8 +34,6 @@ const upload = multer({
   },
 });
 
-router.use(Card1Route);
-router.use(Card2Route);
 router.post("/api/uploadImage", upload.single("filename"), async (req, res) => {
   try {
     console.log("File:", req.file);
@@ -65,5 +65,9 @@ router.post("/api/uploadImage", upload.single("filename"), async (req, res) => {
     return res.status(400).send(error.message);
   }
 });
+
+router.use(Card1Route);
+router.use(Card2Route);
+router.use(WheelRoute)
 
 export default router;
